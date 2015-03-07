@@ -1,0 +1,16 @@
+$color: 'red';
+
+body {
+    background: blue;
+}
+
+.container {
+    h1 {
+        color: red;
+    }
+    h2 {
+        color: blue;
+        background: gray;
+        border-radius: 5px;
+    }
+}
