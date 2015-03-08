@@ -1,3 +1,6 @@
+// --------------------------------------------------------------------
+// Plugins
+// --------------------------------------------------------------------
 var gulp        = require("gulp"),
     sass        = require("gulp-sass"),
     concat      = require("gulp-concat"),
@@ -12,15 +15,26 @@ var gulp        = require("gulp"),
     pngquant    = require("imagemin-pngquant");
 
 // --------------------------------------------------------------------
+// Settings
+// --------------------------------------------------------------------
 
-var dest_js  = "dist/js";
-var dest_css = "dist/css";
-var dest_img = "dist/img";
+var src = {
+    sass: "src/sass/**/*.scss",
+    js: "src/js/**/*.js",
+    img: "src/img/*"
+};
 
-var src_sass = "src/sass/**/*.scss";
-var src_js   = "src/js/**/*.js";
-var src_img   = "src/img/*";
+var output = {
+    js: "output/js",
+    css: "output/css",
+    img: "output/img/",
+    min_css: 'app.min.css',
+    min_js: 'app.min.js'
+};
 
+
+// --------------------------------------------------------------------
+// Error Handler
 // --------------------------------------------------------------------
 
 var onError = function(err) {
@@ -28,72 +42,78 @@ var onError = function(err) {
     this.emit('end');
 };
 
-// SASS to CSS
+
+// --------------------------------------------------------------------
+// Task: Sass
+// --------------------------------------------------------------------
+
 gulp.task('sass', function() {
 
-    return gulp.src(src_sass)
+    return gulp.src(src.sass)
         .pipe(plumber({
             errorHandler: onError
         }))
         .pipe(sass())
         .pipe(prefix('last 2 versions'))
-        .pipe(concat('app.min.css'))
-        .pipe(gulp.dest(dest_css))
+        .pipe(concat(output.min_css))
+        .pipe(gulp.dest(output.css))
         .pipe(minify_css())
         .pipe(sourcemaps.init())
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(dest_css));
-        // .pipe(notify({message: 'Hello world we are done'}));
+        .pipe(gulp.dest(output.css));
 });
 
-// --------------------------------------------------------------------
 
-// Compile JS
+// --------------------------------------------------------------------
+// Task: JS
+// --------------------------------------------------------------------
 
 gulp.task('js', function() {
 
-    return gulp.src(src_js)
+    return gulp.src(src.js)
         .pipe(plumber({
             errorHandler: onError
         }))
         .pipe(uglify())
-        .pipe(concat('app.min.js'))
+        .pipe(concat(output.min_js))
         .pipe(sourcemaps.init())
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(dest_js));
+        .pipe(gulp.dest(output.js));
 
 });
 
-// --------------------------------------------------------------------
 
-// Images
+// --------------------------------------------------------------------
+// Task: Image
+// --------------------------------------------------------------------
 
 gulp.task('img', function() {
 
-    return gulp.src(src_img)
+    return gulp.src(src.img)
         .pipe(imagemin({
             progressive: true,
             svgoPlugins: [{removeViewBox: false}],
             use: [pngquant()]
         }))
-        .pipe(gulp.dest(dest_img));
+        .pipe(gulp.dest(output.img));
 
 });
 
-// --------------------------------------------------------------------
 
-// Watch
+// --------------------------------------------------------------------
+// Task: Watch
+// --------------------------------------------------------------------
 
 gulp.task('watch', function() {
-    gulp.watch(src_js, ['js']);
-    gulp.watch(src_sass, ['sass']);
-    gulp.watch(src_img, ['img']);
+    gulp.watch(src.js, ['js']);
+    gulp.watch(src.sass, ['sass']);
+    gulp.watch(src.img, ['img']);
 });
 
 
 // --------------------------------------------------------------------
+// Task: Default
+// --------------------------------------------------------------------
 
-// Default
-
-gulp.task('default', ['watch', 'sass', 'js', 'img']);
+gulp.task('default', ['watch', 'sass', 'img', 'js']);
 
