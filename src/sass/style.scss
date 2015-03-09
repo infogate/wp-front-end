@@ -1,12 +1,18 @@
 $color: 'red';
 
 body {
-    background: blue;
+    background: #fdfdfd;
+}
+
+h1 {
+    background: silver;
+    padding: 5px;
 }
 
 .container {
     h1 {
         color: red;
+        padding: 10px;
     }
     h2 {
         color: blue;

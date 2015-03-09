@@ -1,6 +1,7 @@
 // --------------------------------------------------------------------
 // Plugins
 // --------------------------------------------------------------------
+
 var gulp        = require("gulp"),
     sass        = require("gulp-sass"),
     concat      = require("gulp-concat"),
@@ -12,7 +13,10 @@ var gulp        = require("gulp"),
     notify      = require("gulp-notify"),
     prefix      = require("gulp-autoprefixer"),
     imagemin    = require("gulp-imagemin"),
-    pngquant    = require("imagemin-pngquant");
+    jshint      = require("gulp-jshint"),
+    pngquant    = require("imagemin-pngquant"),
+    browserSync = require("browser-sync");
+
 
 // --------------------------------------------------------------------
 // Settings
@@ -28,6 +32,7 @@ var output = {
     js: "output/js",
     css: "output/css",
     img: "output/img/",
+    html: "output/**/*.html",
     min_css: 'app.min.css',
     min_js: 'app.min.js'
 };
@@ -60,7 +65,8 @@ gulp.task('sass', function() {
         .pipe(minify_css())
         .pipe(sourcemaps.init())
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(output.css));
+        .pipe(gulp.dest(output.css))
+        .pipe(browserSync.reload({stream: true}));
 });
 
 
@@ -74,11 +80,14 @@ gulp.task('js', function() {
         .pipe(plumber({
             errorHandler: onError
         }))
+        .pipe(jshint())
+        .pipe(jshint.reporter('default'))
         .pipe(uglify())
         .pipe(concat(output.min_js))
         .pipe(sourcemaps.init())
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest(output.js));
+        .pipe(gulp.dest(output.js))
+        .pipe(browserSync.reload({stream: true}));
 
 });
 
@@ -105,9 +114,14 @@ gulp.task('img', function() {
 // --------------------------------------------------------------------
 
 gulp.task('watch', function() {
+    browserSync.init({
+        // proxy: 'localhost',
+        server: './output'
+    });
     gulp.watch(src.js, ['js']);
     gulp.watch(src.sass, ['sass']);
     gulp.watch(src.img, ['img']);
+    gulp.watch(output.html).on('change', browserSync.reload);
 });
 
 
