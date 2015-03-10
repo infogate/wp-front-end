@@ -1,7 +1,22 @@
 {
-    "name": "practice",
-    "description": "Blah",
-    "version": "1.0.0",
+    "name": "learning-gulp",
+    "version": "1.0.3",
+    "description": "Step by Step video to build a Gulp Project",
+    "author": "JREAM <hello@jream.com> http://jream.com",
+    "keywords": [],
+    "homepage": "http://jream.com",
+    "contributors": [
+        "Jesse Boyer <aniyishay@gmail.com> https://github.com/JREAM/",
+        "Dan Sackett <danesackett@gmail.com> https://github.com/dansackett/"
+    ],
+    "license": "MIT",
+    "main": "gulpfile.js",
+    "preferGlobal": false,
+    "private": false,
+    "repository": {
+        "type": "git",
+        "url": "https://bitbucket.org/JREAM/learning-gulp"
+    },
     "dependencies": {
         "gulp": "3.8.11",
         "gulp-sass": "1.3.3",
