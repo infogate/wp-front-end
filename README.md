@@ -2,6 +2,11 @@
 
 This is a source repository to compliment the youtube videos about NodeJS and gulp.
 
+- Playlist: https://www.youtube.com/playlist?list=PLwQf6Mb9WjZAcbae_O76poYwstJWvSZVo
+- Video 1: http://youtu.be/No-r-7I1BCQ
+- Video 2: https://www.youtube.com/watch?v=7U6KSOWF2Mo
+- Video 3: https://www.youtube.com/watch?v=GYJmLBt4nRY
+
 ## Install
 
 Windows/Mac
