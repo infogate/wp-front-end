@@ -1,3 +1,8 @@
+# Important
+
+I mirrored this repository to https://github.com/JREAM/learning-gulp -- Since more people use it for open source projects. 
+I would encourage you to fork from that repository henceforth!
+
 # Learning Gulp
 
 This is a source repository to compliment the youtube videos about NodeJS and gulp.
