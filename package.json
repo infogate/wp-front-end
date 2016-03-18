@@ -1,13 +1,11 @@
 {
-    "name": "learning-gulp",
-    "version": "1.0.3",
-    "description": "Step by Step video to build a Gulp Project",
-    "author": "JREAM <hello@jream.com> http://jream.com",
+    "name": "wp-front-end",
+    "version": "0.0.1",
+    "description": "Front End environment for WordPress Project",
+    "author": "Infogate - Dejan Petrovic",
     "keywords": [],
-    "homepage": "http://jream.com",
+    "homepage": "http://infogate.rs",
     "contributors": [
-        "Jesse Boyer <aniyishay@gmail.com> https://github.com/JREAM/",
-        "Dan Sackett <danesackett@gmail.com> https://github.com/dansackett/"
     ],
     "license": "MIT",
     "main": "gulpfile.js",
@@ -18,19 +16,19 @@
         "url": "https://bitbucket.org/JREAM/learning-gulp"
     },
     "dependencies": {
-        "gulp": "3.8.11",
-        "gulp-sass": "1.3.3",
-        "gulp-concat": "2.5.2",
-        "gulp-watch": "4.1.1",
-        "gulp-plumber": "0.6.6",
-        "gulp-minify-css": "0.5.1",
-        "gulp-uglify": "1.1.0",
-        "gulp-autoprefixer": "2.1.0",
-        "gulp-sourcemaps": "1.5.0",
-        "gulp-imagemin": "2.2.1",
-        "imagemin-pngquant": "4.0.0",
+        "gulp": "~3.9.1",
+        "gulp-sass": "~2.2.0",
+        "gulp-concat": "2.6.0",
+        "gulp-watch": "4.3.5",
+        "gulp-plumber": "1.1.0",
+        "gulp-minify-css": "1.2.4",
+        "gulp-uglify": "1.5.3",
+        "gulp-autoprefixer": "3.1.0",
+        "gulp-sourcemaps": "1.6.0",
+        "gulp-imagemin": "2.4.0",
+        "imagemin-pngquant": "4.2.2",
         "gulp-notify": "2.2.0",
-        "gulp-jshint": "1.9.2",
+        "gulp-jshint": "2.0.0",
         "browser-sync": "2.2.3"
     }
 }
